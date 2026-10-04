@@ -1,0 +1,22 @@
+name: Documentation issue
+description: Something in the README or in-app help is wrong, missing, or unclear.
+title: "[Docs]: "
+labels: ["documentation", "status: needs triage"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Where is it?
+      placeholder: README > CLI reference
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong or missing?
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested fix

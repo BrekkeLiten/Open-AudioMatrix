@@ -1,0 +1,7 @@
+.build/
+.swiftpm/
+.DS_Store
+*.xcuserstate
+docs/superpowers/plans/2026-06-20-routing-matrix-performance.md
+dist/
+.cursor/debug-*.log

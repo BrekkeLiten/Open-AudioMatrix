@@ -1,0 +1,41 @@
+---
+description: Prefer SwiftUI over AppKit; AppKit is allowed only for a fixed set of system APIs
+globs: **/*.swift
+alwaysApply: true
+---
+
+# Prefer SwiftUI, avoid AppKit
+
+This is a SwiftUI macOS app. Do **not** add new `import AppKit` or AppKit
+types (`NS*`) for UI work. Reach for SwiftUI APIs first.
+
+## Sanctioned AppKit usage (do NOT try to remove these)
+
+`NSWorkspace` is the only supported way to do system/process introspection on
+macOS. SwiftUI has no equivalent. AppKit is allowed ONLY for:
+
+- `AppIconView.swift` — `NSWorkspace.shared.icon(forFile:)` / `urlForApplication`
+  to fetch another app's icon.
+- `ProcessEnumerator.swift` — `NSWorkspace.shared.urlForApplication(...)`.
+- `AppViewModel.swift` — `NSWorkspace.shared.runningApplications`.
+
+Do not extend AppKit beyond these files/uses.
+
+## Use SwiftUI instead of AppKit for UI
+
+```swift
+// ❌ BAD: building menus / detecting keys via AppKit
+let menu = NSMenu()
+if NSEvent.modifierFlags.contains(.shift) { ... }
+
+// ✅ GOOD: SwiftUI
+.commands { CommandGroup(replacing: .appInfo) { ... } }
+TapGesture().modifiers(.shift)          // or .onModifierKeysChanged (macOS 14+)
+```
+
+- Window/menu/lifecycle → SwiftUI `Scene`, `WindowGroup`, `.commands { }`,
+  `Settings`, `MenuBarExtra`.
+- Icons/drawing → SF Symbols, `Image`, `Canvas`, `ImageRenderer`.
+- Keyboard modifiers → gesture `.modifiers(...)` / `onModifierKeysChanged`.
+- Only use `@NSApplicationDelegateAdaptor` when a lifecycle hook has no SwiftUI
+  equivalent (e.g. `applicationShouldHandleReopen`).

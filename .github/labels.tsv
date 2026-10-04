@@ -1,0 +1,37 @@
+# name	color	description
+# Type
+bug	d73a4a	Something isn't working
+bug: crash	b60205	App or engine exits unexpectedly or hangs
+bug: audio	e4606d	Dropouts, glitches, latency, or wrong channel routing
+enhancement	a2eeef	New feature or improvement
+documentation	0075ca	README, docs, or in-app help text
+question	d876e3	Usage question rather than a bug
+# Area
+area: app	1d76db	SwiftUI matrix editor
+area: cli	1d76db	audiomatrix command-line tool
+area: engine	1d76db	Mixer engine daemon and IPC
+area: capture	1d76db	Process taps, input capture, and output sinks
+area: presets	1d76db	Saving and loading presets
+area: packaging	1d76db	App bundle, DMG, code signing, and permissions
+# Hardware
+hw: usb interface	5319e7	USB or Thunderbolt audio interfaces
+hw: dante	5319e7	Dante Virtual Soundcard and Dante devices
+hw: avb	5319e7	AVB endpoints
+hw: built-in	5319e7	Built-in Mac speakers, headphones, and microphones
+# Priority
+priority: critical	b60205	Breaks a live show or loses data; fix first
+priority: high	d93f0b	Major feature broken with no workaround
+priority: medium	fbca04	Broken with a workaround, or an important improvement
+priority: low	c2e0c6	Minor issue or nice-to-have
+# Status
+status: needs triage	ededed	Not looked at yet
+status: needs info	fef2c0	Waiting on more details from the reporter
+status: confirmed	0e8a16	Reproduced and accepted
+status: in progress	0052cc	Someone is working on it
+status: blocked	000000	Waiting on something outside this issue
+cannot reproduce	cfd3d7	Could not reproduce with the information given
+duplicate	cfd3d7	Already tracked in another issue
+wontfix	ffffff	Will not be worked on
+# Community
+good first issue	7057ff	Good for newcomers
+help wanted	008672	Extra attention is welcome
